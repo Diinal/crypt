@@ -1,6 +1,6 @@
 in_str = input('Введите входную строку: ')
 out_str = ''
-key = int(input('Введите ключ: '))
+key = int(input('Введите ключ для шифра Цезаря: '))
 mode = input('Выберите режим(зашифровать - crypt, дешифровать - decrypt): ')
 
 in_str = in_str.lower()

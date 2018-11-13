@@ -4,6 +4,21 @@ key = []
 crypt_text = ''
 alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
+
+def nod(a, b):
+    if a < 0:
+        a = a % b
+    while a != 0 and b != 0:
+        if a > b:
+            a %= b
+        else:
+            b %= a
+    result = a + b
+    if result != 1:
+        print("НОД(определитель матрицы,мощности алфавита) не равен 1,дальнейшие действия невозможны")
+        return 0
+
+
 print('write key matrix: ')
 for i in range(size ** 2):
     key.append(int(input()))
@@ -36,7 +51,7 @@ elif size == 3:
     def_key = key[0] * key[4] * key[8] + key[1] * key[5] * key[6] + key[3] * key[7] * key[2]
     def_key = def_key - (key[2] * key[4] * key[6] + key[1] * key[3] * key[8] + key[5] * key[7] * key[0])
 
-
+nod(def_key, len(alphabet))
 
 print(crypt_text)
 
