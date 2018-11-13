@@ -7,14 +7,14 @@ in_str = in_str.lower()
 mode = mode.lower()
 
 if mode == 'crypt' and in_str!='':
-   for char in in_str:
-       ord_char = (ord(char)-97+key)%26 + 97
-       out_char = chr(ord_char)
-       out_str += out_char
+    for char in in_str:
+        ord_char = (ord(char)-97+key)%26 + 97
+        out_char = chr(ord_char)
+        out_str += out_char
 elif mode == 'decrypt' and in_str!='':
     for char in in_str:
-       ord_char = (ord(char)-97-key)%26 + 97
-       out_char = chr(ord_char)
-       out_str += out_char
+        ord_char = (ord(char)-97-key)%26 + 97
+        out_char = chr(ord_char)
+        out_str += out_char
 
 print(out_str)
