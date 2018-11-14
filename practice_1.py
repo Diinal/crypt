@@ -110,5 +110,6 @@ elif size == 2:
 
 print(crypt_text)
 print(decrypt_text)
+print('git settings is good')
 
 
