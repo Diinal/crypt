@@ -19,14 +19,14 @@ while choice != 3:
             if s != ' ':
                 crypto_text += alphabet[(alphabet.find(s) + alphabet.find(gamma[text.find(s)])) % len(alphabet)]
             else:
-                crypto_text += ' '
+                crypto_text += ''
 
     if choice == 1:
         for s in text:
             if s != ' ':
                 crypto_text += alphabet[(alphabet.find(s) ^ alphabet.find(gamma[text.find(s)])) % len(alphabet)]
             else:
-                crypto_text += ' '
+                crypto_text += ''
     if choice == 2:
         table = dict()
         pre_crypt = ''
