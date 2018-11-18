@@ -51,10 +51,6 @@ if len(text) % size != 0:
 if size == 3:
     for i in range(int(len(text) / size)):
         for j in range(size):
-            '''print('{0} * {1} + {2} * {3} + {4} * {5} % 33'.format(alphabet.find(text[i]), key[size * j],
-                                                                  alphabet.find(text[i+1]), key[size * j + 1],
-                                                                  alphabet.find(text[i+2]), key[size * j + 2]))'''
-
             crypt_text += alphabet[((alphabet.find(text[size*i]) * key[size*j]) +
                                     (alphabet.find(text[size*i + 1]) * key[size*j+1]) +
                                     (alphabet.find(text[size*i + 2]) * key[size*j+2])) % len(alphabet)]
@@ -64,6 +60,9 @@ elif size == 2:
         for j in range(size):
             crypt_text += alphabet[((alphabet.find(text[size*i]) * key[size * j]) +
                                     (alphabet.find(text[size*i + 1]) * key[size * j + 1])) % len(alphabet)]
+
+print(crypt_text)
+
 #decrypt
 
 det = determinant()
@@ -108,8 +107,6 @@ elif size == 2:
             decrypt_text += alphabet[((alphabet.find(crypt_text[size*i]) * decrypt_key[size * j]) +
                                     (alphabet.find(crypt_text[size*i + 1]) * decrypt_key[size * j + 1])) % len(alphabet)]
 
-print(crypt_text)
 print(decrypt_text)
-print('git settings is good')
 
 
