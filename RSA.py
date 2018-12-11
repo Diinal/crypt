@@ -37,8 +37,11 @@ if __name__ == '__main__':
     print((f_eiler))
     print(e)
     print(d)
+    text_position = []
     for sym in input_text:
+        text_position.append(alphabet.find(sym))
         crypt_text.append((alphabet.find(sym)**e) % n)
+    print(text_position)
     for sym in crypt_text:
         decrypt_text += alphabet[(sym**d) % n]
 

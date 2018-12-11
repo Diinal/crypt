@@ -34,7 +34,7 @@ def bin_to_int(arr):
 
 
 #text = input('text >>')
-text = 'АБРАМОВ'
+text = 'эльгамальусовершенствовалсистемудиффихеллманаиполучилдваалгоритма'
 #key = input('over grow sequence >>')
 #key = [key.split()]
 e_key = (62, 93, 186, 403, 417, 352, 315, 210)
@@ -72,6 +72,7 @@ for sym in enc_text:
 print(dec_bin_text)
 dec_text = ''
 dec_bin_text = bin_to_int(dec_bin_text)
+print(dec_bin_text)
 for a in dec_bin_text:
     dec_text += chr(a + 848)
 print(dec_text)

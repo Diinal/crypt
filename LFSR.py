@@ -25,5 +25,5 @@ for i in range(2 ** len(state_str)-1):
     for a in range(len(cp)-1):
         next_state[0] ^= state[cp[a+1]-1]
 
-    next_state[1:] = state[:len(state) - 1]
+    next_state[1:] = state[:-1]
     print(str(state) + 'key:' + str(key[i]))
