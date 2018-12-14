@@ -1,29 +1,31 @@
 #LFSR = linear feedback shift register
 #РСЛОС = регистр сдвига с линейной обратной связью
 
-cp_str = input('input degrees of characteristic polynomial(example: x^4 + x + 1 = 4 1 0 ) >> ')
-state_str = input('input the initial state of the shift register(example: 0110) >> ')
+cp_str = input('input degrees of characteristic polynomial(example: x^4 + x + 1 = 4 1 0 ) >> ') #ввод степеней характеристического многочлена (неприводимого)
+state_str = input('input the initial state of the shift register(example: 0110) >> ') #ввод начального состояния регистра
 
-cp = []
-state = []
-key = []
+cp = [] #инициализация списка для степеней характеристического многочлена
+state = [] #инициализация списка для начального состояния регистра
+key = [] #иницизация списка для созранения ключа
 
+#перевод степеней многочлена из строкового представления в список int, удаляются пробелы и 0, т.к он не участвует в вычислении входного состояния
 for s in cp_str:
     if s != ' ' and s != '0':
         cp.append(int(s))
 
+#перевод начального состояния региста из строкового представления в список int
 for s in state_str:
     state.append(int(s))
 
-next_state = state.copy()
+next_state = state.copy() #инициализация и объявление переменной для хранения следующего состояния регистра
 
-for i in range(2 ** len(state_str)-1):
-    state = next_state.copy()
-    key.append(state[len(state)-1])
-    next_state[0] = next_state[cp[0]-1]
+for i in range(2 ** len(state_str)-1): #генерация итератора 0 <= i < 2^(старшая степень) - 1
+    state = next_state.copy() #получение следующего состояния
+    key.append(state[-1]) #запись последнего бита состояния в конец списка-ключа
+    next_state[0] = next_state[cp[0]-1] #получение первой степени характеристического многочлена, -1 т.к списки индексируются не с 1, а с 0 значения
 
-    for a in range(len(cp)-1):
-        next_state[0] ^= state[cp[a+1]-1]
+    for a in range(len(cp)-1): #итератор, где 0 <= i < длина списка со степенями
+        next_state[0] ^= state[cp[a+1]-1] #получение следующего состояния первого бита регистра путем преобразования текущего операцией xor (исключающее или)
 
-    next_state[1:] = state[:-1]
-    print(str(state) + 'key:' + str(key[i]))
+    next_state[1:] = state[:-1] #все биты следующего состояния. начинающиеся со 2-го (индекс = 1) равны всем битам текущего кроме последнего
+    print(str(state) + 'key:' + str(key[i])) #вывод текущего состояния регистра и ключевого бита текущей итерации алгоритма
